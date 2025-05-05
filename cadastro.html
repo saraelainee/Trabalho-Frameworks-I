@@ -4,25 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro Estudante</title>
+    <title>Cadastro de Produtos</title>
 </head>
 
 <body>
+    <div id="botaoVoltar">
+        <button onclick="location.href='http://127.0.0.1:5500/'">Voltar</button>
+    </div>
+
     <form onsubmit="event.preventDefault();trataForm()">
-        <input type="text" id="id" name="id" placeholder="Id">
-        <input type="text" name="nome" id="nome" placeholder="Nome">
+        <input type="text" id="id" name="id" placeholder="Categoria">
         <input type="submit" value="Enviar">
     </form>
+
+    <!-- <form onsubmit="event.preventDefault();trataForm()">
+        <input type="text" id="id" name="id" placeholder="Id">
+        <input type="submit" value="Enviar">
+    </form> -->
+
     <script>
         async function trataForm() {
             const idInput = document.getElementById("id")
-            const idNome = document.getElementById("nome")
             const id = idInput.value
-            const nome = idNome.value
 
             const objEstudante = {
-                id,
-                nome
+                categoria
             }
             try {
                 const resposta = await fetch("http://localhost:8001/estudantes", {
