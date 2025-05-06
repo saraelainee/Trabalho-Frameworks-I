@@ -1,26 +1,25 @@
-
 import mysql, { Connection, ConnectionOptions , QueryError } from 'mysql2/promise';
 import fastify, { FastifyReply, FastifyRequest } from 'fastify'
 import cors from '@fastify/cors'
 
-
 const app = fastify()
 app.register(cors)
 
+//função get
 app.get("/", (request: FastifyRequest, reply: FastifyReply) => {
     reply.send("Fastify Funcionando!")
 })
-app.get("/estudantes", async (request: FastifyRequest, reply: FastifyReply) => {
+app.get("/categoria", async (request: FastifyRequest, reply: FastifyReply) => {
    
     try {
         const conn = await mysql.createConnection( {
           host: "localhost",
           user: 'root',
           password: "",
-          database: 'banco1023b',
+          database: 'trabalho1Frameworks',
           port: 3306
       });
-        const resultado = await conn.query("SELECT * FROM estudantes")
+        const resultado = await conn.query("SELECT * FROM categoria")
         const [dados,estruturaTabela] = resultado
         reply.send(dados)
 
@@ -43,8 +42,9 @@ app.get("/estudantes", async (request: FastifyRequest, reply: FastifyReply) => {
     
 })
 
-app.post("/estudantes", async (request: FastifyRequest, reply: FastifyReply) => {
-    const {id, nome} = request.body as any
+////função post
+app.post("/categoria", async (request: FastifyRequest, reply: FastifyReply) => {
+    const {nomeCategoria} = request.body as any
 
     //VERIFICAR SE O NOME É VAZIO
     try {
@@ -52,10 +52,10 @@ app.post("/estudantes", async (request: FastifyRequest, reply: FastifyReply) => 
           host: "localhost",
           user: 'root',
           password: "",
-          database: 'banco1023b',
+          database: 'trabalho1Frameworks',
           port: 3306
       });
-        const resultado = await conn.query("INSERT INTO estudantes (id,nome) VALUES (?,?)",[id,nome])
+        const resultado = await conn.query("INSERT INTO categoria (nomeCategorias) VALUES (?)",[nomeCategoria])
         const [dados,estruturaTabela] = resultado
         reply.send(dados)
 

@@ -9,7 +9,7 @@
 <body>
     <h1>Lista de Produtos</h1>
     <div id="botaoCadastro">
-        <button onclick="location.href='./cadastro.html'">Cadastrar</button>
+        <button onclick="location.href='./cadastro.html'">Cadastrar Novos Produtos</button>
     </div>
 
     <ul id="minhalista">
@@ -17,7 +17,7 @@
     
     <script>
         async function buscaDados(){
-            const resposta = await fetch("http://localhost:8001/estudantes")
+            const resposta = await fetch("http://localhost:8001/categoria")
             console.log(resposta)
             if(resposta.status === 200){
                 const dados = await resposta.json()
@@ -25,9 +25,9 @@
                 const ul = document.getElementById("minhalista")
                 for (let i = 0; i < dados.length; i++) {
                     const obj = dados[i];
-                    console.log(obj.nome)
+                    console.log(obj.nomeCategorias)
                     const li = document.createElement("li")
-                    li.innerText = `${obj.id} - ${obj.nome}`	
+                    li.innerText = `${obj.nomeCategorias}`	
                     ul.appendChild(li)
                     
                 }
