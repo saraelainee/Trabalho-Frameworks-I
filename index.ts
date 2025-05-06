@@ -9,7 +9,7 @@ app.register(cors)
 app.get("/", (request: FastifyRequest, reply: FastifyReply) => {
     reply.send("Fastify Funcionando!")
 })
-app.get("/categoria", async (request: FastifyRequest, reply: FastifyReply) => {
+app.get("/contemProdutos", async (request: FastifyRequest, reply: FastifyReply) => {
    
     try {
         const conn = await mysql.createConnection( {
@@ -19,7 +19,7 @@ app.get("/categoria", async (request: FastifyRequest, reply: FastifyReply) => {
           database: 'trabalho1Frameworks',
           port: 3306
       });
-        const resultado = await conn.query("SELECT * FROM categoria")
+        const resultado = await conn.query("SELECT * FROM contemProdutos")
         const [dados,estruturaTabela] = resultado
         reply.send(dados)
 
@@ -43,8 +43,8 @@ app.get("/categoria", async (request: FastifyRequest, reply: FastifyReply) => {
 })
 
 ////função post
-app.post("/categoria", async (request: FastifyRequest, reply: FastifyReply) => {
-    const {nomeCategoria} = request.body as any
+app.post("/contemProdutos", async (request: FastifyRequest, reply: FastifyReply) => {
+    const {nomeProdutosExistentes} = request.body as any
 
     //VERIFICAR SE O NOME É VAZIO
     try {
@@ -55,7 +55,7 @@ app.post("/categoria", async (request: FastifyRequest, reply: FastifyReply) => {
           database: 'trabalho1Frameworks',
           port: 3306
       });
-        const resultado = await conn.query("INSERT INTO categoria (nomeCategorias) VALUES (?)",[nomeCategoria])
+        const resultado = await conn.query("INSERT INTO contemProdutos (nomeProdutosExistentes) VALUES (?)",[nomeProdutosExistentes])
         const [dados,estruturaTabela] = resultado
         reply.send(dados)
 

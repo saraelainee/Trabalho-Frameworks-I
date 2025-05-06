@@ -13,7 +13,7 @@
     </div>
 
     <form onsubmit="event.preventDefault();trataForm()">
-        <input type="text" id="nomeCategorias" name="nomeCategorias" placeholder="Categoria">
+        <input type="text" id="nomeProdutosExistentes" name="nomeProdutosExistentes" placeholder="Produtos que tem na Casa">
         <input type="submit" value="Enviar">
     </form>
 
@@ -24,29 +24,29 @@
 
     <script>
         async function trataForm() {
-            const nomeCategoriasInput = document.getElementById("nomeCategorias")
-            const nomeCategorias = nomeCategoriasInput.value
+            const contemProdutosInput = document.getElementById("nomeProdutosExistentes")
+            const nomeProdutosExistentes = contemProdutosInput.value
 
-            const objCategoria = {
-                nomeCategorias
+            const objcontemProdutos = {
+                nomeProdutosExistentes
             }
             try {
-                const resposta = await fetch("http://localhost:8001/categoria", {
+                const resposta = await fetch("http://localhost:8001/contemProdutos", {
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     method: "POST",
-                    body: JSON.stringify(objCategoria)
+                    body: JSON.stringify(objcontemProdutos)
                 })
                 if(resposta.status===404){
-                    alert("Categoria não foi excluída")
+                    alert("Produto não foi excluído")
                 }
                 if(resposta.status===400){
                     const dados = await resposta.json()
                     alert(`Deu erro do lado do servidor\n" ${dados.mensagem}`)
                 }
                 if(resposta.status===200){
-                    alert("Categoria cadastrado com sucesso")
+                    alert("Produto cadastrado com sucesso")
                 }
             }catch(erro){
                 console.log(erro)
