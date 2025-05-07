@@ -9,7 +9,7 @@ app.register(cors)
 app.get("/", (request: FastifyRequest, reply: FastifyReply) => {
     reply.send("Fastify Funcionando!")
 })
-app.get("/contemProdutos", async (request: FastifyRequest, reply: FastifyReply) => {
+app.get("/contemProdutos.html", async (request: FastifyRequest, reply: FastifyReply) => {
    
     try {
         const conn = await mysql.createConnection( {
