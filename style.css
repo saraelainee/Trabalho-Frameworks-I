@@ -1,3 +1,32 @@
 body{
+    background-color: #bb48a0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1{
+    color: #fff;
+    text-align: center;
+}
+
+#minhalista{
+ display: flex;
+    flex-direction: column;
     align-items: center;
+    margin-top: 20px;
+    text-align: justify;
+}
+
+button{
+    display: flex;
+    background-color: #fff;
+    align-items: center;
+    color: #bb48a0;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
 }
