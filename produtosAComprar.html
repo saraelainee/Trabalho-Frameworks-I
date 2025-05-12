@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Produtos</title>
-    <script src="mscript.js"></script>
+    <title>Produtos a Comprar</title>
+    <link rel="stylesheet" href="style.css">
+    <a href="index.html">Tesxtando</a>
+    
+    <script src="script.js"></script>   
 </head>
 
 <body>
     <div id="botaoVoltar">
         <a href="./index.html"><button>voltar</button></a>
     </div>
-
-    <form onsubmit="event.preventDefault();trataForm()">
-        <input type="text" id="nomeProdutosExistentes" name="nomeProdutosExistentes" placeholder="Produtos que tem na Casa">
-        <input type="submit" value="Enviar">
-    </form>
 
     <form onsubmit="event.preventDefault();trataFormFalta()">
         <input type="text" id="produtosAComprar" name="produtosAComprar" placeholder="Produtos que estão faltando na casa">
@@ -25,9 +22,9 @@
 
 
     <script>
-        async function trataForm() {
-            const contemProdutosInput = document.getElementById("nomeProdutosExistentes")
-            const nomeProdutosExistentes = contemProdutosInput.value
+        async function trataFormFalta() {
+            const contemProdutosInput = document.getElementById("nomeProdutosAComprar")
+            const nomeProdutosAComprar = contemProdutosInput.value
 
             const objcontemProdutos = {
                 nomeProdutosExistentes
@@ -58,5 +55,4 @@
         }
     </script>
 </body>
-
 </html>
