@@ -5,54 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos a Comprar</title>
     <link rel="stylesheet" href="style.css">
-    <a href="index.html">Tesxtando</a>
-    
+    <link rel="produtosAComprar" href="produtosAComprar.html">
     <script src="script.js"></script>   
 </head>
 
 <body>
-    <div id="botaoVoltar">
-        <a href="./index.html"><button>voltar</button></a>
+    <div class="listacontemProdutos">
+        <h2>Lista de Produtos Disponíveis<h2>
+        <ul id="minhalistaFaltantes">
+        </ul>
+    </div>
+    
+    <div id="botaoVoltarComprar">
+        <a href="./index.html"><button>Voltar</button></a>
     </div>
 
     <form onsubmit="event.preventDefault();trataFormFalta()">
-        <input type="text" id="produtosAComprar" name="produtosAComprar" placeholder="Produtos que estão faltando na casa">
+        <input type="text" id="produtosAComprar" name="produtosAComprar" placeholder="Produtos Faltantes">
         <input type="submit" value="Enviar">
     </form>
 
 
-    <script>
-        async function trataFormFalta() {
-            const contemProdutosInput = document.getElementById("nomeProdutosAComprar")
-            const nomeProdutosAComprar = contemProdutosInput.value
 
-            const objcontemProdutos = {
-                nomeProdutosExistentes
-            }
-            try {
-                const resposta = await fetch("http://localhost:8001/contemProdutos", {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    method: "POST",
-                    body: JSON.stringify(objcontemProdutos)
-                })
-                if(resposta.status===404){
-                    console.log("Produto não foi excluído")
-                }
-                if(resposta.status===400){
-                    const dados = await resposta.json()
-                    alert(`Deu erro do lado do servidor\n" ${dados.mensagem}`)
-                }
-                if(resposta.status===200){
-                    alert("Produto cadastrado com sucesso")
-                }
-            }catch(erro){
-                console.log(erro)
-                alert("Deu algo errado na requisição do post! \n"+ 
-                "Você ligou o BACKEND com NPM RUN dev?")
-            }
-        }
-    </script>
 </body>
 </html>

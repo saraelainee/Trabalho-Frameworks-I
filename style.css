@@ -1,12 +1,12 @@
 body{
-    background-color: #bb48a0;
+    background-color: #ffff;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
 }
 
 h1{
-    color: #fff;
+    color: #000;
     text-align: center;
 }
 
@@ -20,9 +20,9 @@ h1{
 
 button{
     display: flex;
-    background-color: #fff;
+    background-color: rgb(177, 255, 255);
     align-items: center;
-    color: #bb48a0;
+    color: #000;
     border: none;
     padding: 10px 20px;
     font-size: 16px;

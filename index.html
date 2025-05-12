@@ -6,59 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de compras</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="contemProdutos" href="contemProdutos.html">
     <link rel="produtosAComprar" href="produtosAComprar.html">
+    <script src="script.js"></script>
 </head>
 
 <body>
     <h1>Lista de Produtos</h1>
 
-    <h2>Lista de itens Existentes em casa<h2>
-    <ul id="minhalista">
-    </ul>
+    <div class="listacontemProdutos">
+        <h2>Lista de itens Existentes<h2>
+        <ul id="minhalistaContem">
+        </ul>
+    </div>
 
-    <script>
-        async function buscaDados() {
-            const resposta = await fetch("http://localhost:8001/contemProdutos.html")
-            console.log(resposta)
-            if (resposta.status === 200) {
-                const dados = await resposta.json()
-                console.log(dados)
-                const ul = document.getElementById("minhalista")
-                for (let i = 0; i < dados.length; i++) {
+    <div class="listaProdutosFaltantes">
+        <h2>Lista de itens Faltantes<h2>
+        <ul id="minhalistaFaltantes">
+        </ul>
+    </div>
+    
 
-                    const obj = dados[i];
+    <div id="botaoCadastroExistentes">
+        <button onclick="location.href='./contemProdutos.html'">Cadastrar Produtos Existentes</button>
+    </div>
 
-                    const li = document.createElement("li")
-
-                    li.innerText = `${obj.nomeProdutosExistentes}`
-
-                    console.log(obj.contemProdutos)
-
-                    ul.appendChild(li)
-
-                }
-                // vai passar por cada elemento dos dados
-                // vai criar um li pra cada dado
-                // adicionar o li na lista com id "minhalista"
-
-
-            } else {
-                if (resposta.status === 400) {
-                    const dados = await resposta.json()
-                    alert(dados.mensagem)
-                    console.log(obj.contemProdutos)
-                } else {
-                    console.log("Erro Desconhecido!")
-                }
-            }
-
-        }
-        buscaDados()
-
-    </script>
-
-    <div id="botaoCadastro">
-        <button onclick="location.href='./contemProdutos.html'">Cadastrar Novos Produtos</button>
+    <div id="botaoCadastroFaltantes">
+        <button onclick="location.href='./produtosAComprar.html'">Cadastrar Produtos Faltantes</button>
     </div>
 </body>
 
