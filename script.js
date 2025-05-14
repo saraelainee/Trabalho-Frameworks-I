@@ -12,7 +12,7 @@ async function buscaDados() {
 
                     const li = document.createElement("li")
 
-                    li.innerText = `${obj.idExistentes}. ${obj.nomeProdutosExistentes} - ${obj.quantidadeExistentes} - ${obj.categoriaExistentes}`
+                    li.innerText = `${obj.idExistentes}. ${obj.quantidadeExistentes} - ${obj.nomeProdutosExistentes} (${obj.categoriaExistentes})`
 
                     console.log(obj.nomeProdutosExistentes)
 
@@ -39,13 +39,19 @@ async function buscaDados() {
 async function trataForm() {
             const idExistentesInput = document.getElementById("idExistentes")
             const contemProdutosInput = document.getElementById("nomeProdutosExistentes")
-            const quantidadeProdutosInput = document.getElementById("quantidadeExistentes")
-            const categoriaProdutosInput = document.getElementById("categoriaExistentes")
+            const quantidadeExistentesInput = document.getElementById("quantidadeExistentes")
+            const categoriaExistentesInput = document.getElementById("categoriaExistentes")
 
             const idExistentes = idExistentesInput.value
             const nomeProdutosExistentes = contemProdutosInput.value
             const quantidadeExistentes = quantidadeProdutosInput.value
             const categoriaExistentes = categoriaProdutosInput.value
+
+            // Verificação de valores nulos ou vazios
+            if (!idExistentes || !nomeProdutosExistentes || !quantidadeExistentes || !categoriaExistentes === 0) {
+            alert("Todos os campos devem ser preenchidos!")
+            return
+            } 
 
             const objcontemProdutos = {
                 idExistentes,
@@ -97,7 +103,7 @@ async function buscaDadosComprar() {
 
                     const li = document.createElement("li")
 
-                    li.innerText = `${obj.nomeProdutosFaltantes}`
+                    li.innerText = `${obj.idFaltantes}. ${obj.quantidadeFaltantes}- ${obj.nomeProdutosFaltantes} (${obj.categoriaFaltantes})`
 
                     console.log(obj.nomeProdutosFaltantes)
 
@@ -120,28 +126,46 @@ async function buscaDadosComprar() {
         buscaDadosComprar()
 
 async function trataFormFalta() {
-            const produtosAComprarInput = document.getElementById("produtosAComprar")
-            const nomeProdutosFaltantes = produtosAComprarInput.value
+            const idFaltantesInput = document.getElementById("idFaltantes")
+            const produtosFaltantesInput = document.getElementById("nomeProdutosFaltantes")
+            const quantidadeFaltantesInput = document.getElementById("quantidadeFaltantes")
+            const categoriaFaltantesInput = document.getElementById("categoriaFaltantes")
+
+            const idFaltantes = idFaltantesInput.value
+            const nomeProdutosFaltantes = produtosFaltantesInput.value
+            const quantidadeFaltantes = quantidadeFaltantesInput.value
+            const categoriaFaltantes= categoriaFaltantesInput.value
+
+            // Verificação de valores nulos ou vazios
+            if (!idFaltantes || !nomeProdutosFaltantes || !quantidadeFaltantes || !categoriaFaltantes === null) {
+            alert("Todos os campos devem ser preenchidos!")
+            return
+            } 
 
             const objprodutosAComprar = {
-                nomeProdutosFaltantes
+                idFaltantes,
+                nomeProdutosFaltantes,
+                quantidadeFaltantes,
+                categoriaFaltantes
             }
+
+
             try {
-                const resposta = await fetch("http://localhost:8001/produtosAComprar", {
+                const resposta1 = await fetch("http://localhost:8001/produtosAComprar", {
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     method: "POST",
                     body: JSON.stringify(objprodutosAComprar)
                 })
-                if(resposta.status===404){
+                if(resposta1.status===404){
                     console.log("Produto não foi excluído")
                 }
-                if(resposta.status===400){
-                    const dados1 = await resposta.json()
+                if(resposta1.status===400){
+                    const dados1 = await resposta1.json()
                     alert(`Deu erro do lado do servidor\n" ${dados1.mensagem}`)
                 }
-                if(resposta.status===200){
+                if(resposta1.status===200){
                     alert("Produto cadastrado com sucesso")
                 }
             }catch(erro){

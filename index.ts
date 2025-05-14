@@ -35,6 +35,12 @@ app.get("/contemProdutos.html", async (request: FastifyRequest, reply: FastifyRe
         } else if (erro.code === "ER_BAD_DB_ERROR") {
             console.log("ERRO: CONFIRA O NOME DO BANCO DE DADOS OU CRIE UM NOVO BANCO COM O NOME QUE VOCÊ COLOCOU LÁ NA CONEXÃO")
             reply.status(400).send({mensagem:"ERRO: CONFIRA O NOME DO BANCO DE DADOS OU CRIE UM NOVO BANCO COM O NOME QUE VOCÊ COLOCOU LÁ NA CONEXÃO"})
+        } else if(erro.code === "EER_DUP_ENTRY") {
+            console.log("ERRO: CHAVE PRIMÁRIA DUPLICADA!")
+            reply.status(400).send({mensagem:"ERRO: CHAVE PRIMÁRIA DUPLICADA"})
+        }else if(erro.code === "ER_TRUNCATED_WRONG_VALUE_FOR_FIELD") {
+            console.log("ERRO: A CHAVE PRIMÁRIA ESTÁ VAZIA!")
+            reply.status(400).send({mensagem:"ERRO: CHAVE PRIMÁRIA VAZIA"})
         } else if (erro.code === "ER_ACCESS_DENIED_ERROR") {
             console.log("ERRO: CONFIRA O USUÁRIO E SENHA NA CONEXÃO")
             reply.status(400).send({mensagem:"ERRO: CONFIRA O USUÁRIO E SENHA NA CONEXÃO"})
@@ -78,6 +84,14 @@ app.post("/contemProdutos", async (request: FastifyRequest, reply: FastifyReply)
             case "ER_ACCESS_DENIED_ERROR":
                 console.log("ERRO: CONFIRA O USUÁRIO E SENHA NA CONEXÃO");
                 reply.status(400).send({ mensagem: "ERRO: CONFIRA O USUÁRIO E SENHA NA CONEXÃO" });
+                break;
+            case "ER_DUP_ENTRY":
+                console.log("ERRO: VOCÊ DUPLICOU A CHAVE PRIMÁRIA");
+                reply.status(400).send({ mensagem: "ERRO: VOCÊ DUPLICOU A CHAVE PRIMÁRIA" });
+                break;
+            case "ER_TRUNCATED_WRONG_VALUE_FOR_FIELD":
+                console.log("ERRO: A CHAVE PRIMÁRIA VAZIA");
+                reply.status(400).send({ mensagem: "ERRO: A CHAVE PRIMÁRIA VAZIA" });
                 break;
             default:
                 console.log(erro);
@@ -185,7 +199,7 @@ app.get("/produtosAComprar", async (request: FastifyRequest, reply: FastifyReply
 
 //FUNÇÃO POST
 app.post("/produtosAComprar", async (request: FastifyRequest, reply: FastifyReply) => {
-    const {nomeProdutosFaltantes} = request.body as any
+    const {idFaltantes, nomeProdutosFaltantes, quantidadeFaltantes, categoriaFaltantes} = request.body as any
 
     //VERIFICAR SE O NOME É VAZIO
     try {
@@ -196,7 +210,7 @@ app.post("/produtosAComprar", async (request: FastifyRequest, reply: FastifyRepl
           database: 'trabalho1Frameworks',
           port: 3306
       });
-        const resultado1 = await conn1.query("INSERT INTO produtosAComprar (nomeProdutosFaltantes) VALUES (?)",[nomeProdutosFaltantes])
+        const resultado1 = await conn1.query("INSERT INTO produtosAComprar (idFaltantes,nomeProdutosFaltantes,quantidadeFaltantes,categoriaFaltantes) values(?,?,?,?)",[idFaltantes,nomeProdutosFaltantes,quantidadeFaltantes,categoriaFaltantes])
         const [dados1,estruturaTabela1] = resultado1
         reply.send(dados1)
 

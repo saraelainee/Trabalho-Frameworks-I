@@ -21,7 +21,10 @@
     </div>
 
     <form onsubmit="event.preventDefault();trataFormFalta()">
-        <input type="text" id="produtosAComprar" name="produtosAComprar" placeholder="Produtos Faltantes">
+        <input type="number" id="idFaltantes" name="idFaltantes" placeholder="ID">
+        <input type="text" id="nomeProdutosFaltantes" name="nomeProdutosFaltantes" placeholder="Produtos Faltantes">
+        <input type="number" id="quantidadeFaltantes" name="quantidadeFaltantes" placeholder="Quantidade">
+        <input type="text" id="categoriaFaltantes" name="categoriaFaltantes" placeholder="Categoria">
         <input type="submit" value="Enviar">
     </form>
 
