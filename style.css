@@ -10,12 +10,20 @@ h1{
     text-align: center;
 }
 
-#minhalista{
- display: flex;
+#minhalistaContem{
+    display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
     text-align: justify;
+}
+
+#minhalistaFaltantes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    text-align: justify;  
 }
 
 button{
@@ -29,6 +37,4 @@ button{
     cursor: pointer;
     border-radius: 5px;
     margin-top: 10px;
-    height: 10px;
-    width: 15px;
 }

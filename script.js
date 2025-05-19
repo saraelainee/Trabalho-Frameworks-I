@@ -5,19 +5,17 @@ async function buscaDados() {
             if (resposta.status === 200) {
                 const dados = await resposta.json()
                 console.log(dados)
-                const ul = document.getElementById("minhalistaContem")
+                const ul = document.getElementById("")
                 for (let i = 0; i < dados.length; i++) {
-
                     const obj = dados[i];
-
+ 
                     const li = document.createElement("li")
 
                     li.innerText = `${obj.idExistentes}. ${obj.quantidadeExistentes} - ${obj.nomeProdutosExistentes} (${obj.categoriaExistentes})`
 
-                    console.log(obj.nomeProdutosExistentes)
+                    console.log(obj.idExistentes,obj.nomeProdutosExistentes,obj.nomeProdutosExistentes,obj.categoriaExistentes)
 
                     ul.appendChild(li)
-
                 }
 
 
@@ -44,8 +42,8 @@ async function trataForm() {
 
             const idExistentes = idExistentesInput.value
             const nomeProdutosExistentes = contemProdutosInput.value
-            const quantidadeExistentes = quantidadeProdutosInput.value
-            const categoriaExistentes = categoriaProdutosInput.value
+            const quantidadeExistentes = quantidadeExistentesInput.value
+            const categoriaExistentes = categoriaExistentesInput.value
 
             // Verificação de valores nulos ou vazios
             if (!idExistentes || !nomeProdutosExistentes || !quantidadeExistentes || !categoriaExistentes === 0) {
