@@ -10,23 +10,25 @@
 </head>
 
 <body>
-    <div class="listacontemProdutos">
+    <div id="listacontemProdutos">
         <h2>Lista de itens Existentes<h2>
         <ul id="minhalistaContem">
         </ul>
     </div>
 
-    <div id="botaoVoltarContem">
-        <a href="./index.html"><button>Voltar</button></a>
-    </div>
+    <div id="formExistentes">
+        <form onsubmit="event.preventDefault();trataForm()">
+            <input type="number" id="idExistentes" name="idExistentes" placeholder="ID">
+            <input type="text" id="nomeProdutosExistentes" name="nomeProdutosExistentes" placeholder="Produtos Existentes">
+            <input type="number" id="quantidadeExistentes" name="quantidadeExistentes" placeholder="Quantidade">
+            <input type="text" id="categoriaExistentes" name="categoriaExistentes" placeholder="Categoria">
+            <input type="submit" value="Enviar">
+        </form>
 
-    <form onsubmit="event.preventDefault();trataForm()">
-        <input type="number" id="idExistentes" name="idExistentes" placeholder="ID">
-        <input type="text" id="nomeProdutosExistentes" name="nomeProdutosExistentes" placeholder="Produtos Existentes">
-        <input type="number" id="quantidadeExistentes" name="quantidadeExistentes" placeholder="Quantidade">
-        <input type="text" id="categoriaExistentes" name="categoriaExistentes" placeholder="Categoria">
-        <input type="submit" value="Enviar">
-    </form>
+        <div id="botaoVoltarContem">
+            <a href="./index.html"><button>Voltar</button></a>
+        </div>
+    </div>
 
 </body>
 

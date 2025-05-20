@@ -12,27 +12,33 @@
 </head>
 
 <body>
-    <h1>Lista de Produtos</h1>
+    <div id="bodyIndex">
+        
+        <h1>Listas de Produtos</h1>
+        
+        <div id="indexContem">
+            <div class="listacontemProdutos">
+                <h2>Lista de itens Existentes<h2>
+                        <ul id="minhalistaContem">
+                        </ul>
+            </div>
 
-    <div class="listacontemProdutos">
-        <h2>Lista de itens Existentes<h2>
-        <ul id="minhalistaContem">
-        </ul>
-    </div>
+            <div id="botaoCadastroExistentes">
+                <button onclick="location.href='./contemProdutos.html'">Cadastrar Produtos Existentes</button>
+            </div>
+        </div>
 
-    <div class="listaProdutosFaltantes">
-        <h2>Lista de itens Faltantes<h2>
-        <ul id="minhalistaFaltantes">
-        </ul>
-    </div>
-    
+        <div id="indexFaltantes">
+            <div class="listaProdutosFaltantes">
+                <h2>Lista de itens Faltantes<h2>
+                        <ul id="minhalistaFaltantes">
+                        </ul>
+            </div>
 
-    <div id="botaoCadastroExistentes">
-        <button onclick="location.href='./contemProdutos.html'">Cadastrar Produtos Existentes</button>
-    </div>
-
-    <div id="botaoCadastroFaltantes">
-        <button onclick="location.href='./produtosAComprar.html'">Cadastrar Produtos Faltantes</button>
+            <div id="botaoCadastroFaltantes">
+                <button onclick="location.href='./produtosAComprar.html'">Cadastrar Produtos Faltantes</button>
+            </div>
+        </div>
     </div>
 </body>
 

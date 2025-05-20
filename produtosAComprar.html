@@ -16,19 +16,19 @@
         </ul>
     </div>
     
+    <div id="formFaltantes">
+        <form onsubmit="event.preventDefault();trataFormFalta()">
+            <input type="number" id="idFaltantes" name="idFaltantes" placeholder="ID">
+            <input type="text" id="nomeProdutosFaltantes" name="nomeProdutosFaltantes" placeholder="Produtos Faltantes">
+            <input type="number" id="quantidadeFaltantes" name="quantidadeFaltantes" placeholder="Quantidade">
+            <input type="text" id="categoriaFaltantes" name="categoriaFaltantes" placeholder="Categoria">
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+    
     <div id="botaoVoltarComprar">
         <a href="./index.html"><button>Voltar</button></a>
     </div>
-
-    <form onsubmit="event.preventDefault();trataFormFalta()">
-        <input type="number" id="idFaltantes" name="idFaltantes" placeholder="ID">
-        <input type="text" id="nomeProdutosFaltantes" name="nomeProdutosFaltantes" placeholder="Produtos Faltantes">
-        <input type="number" id="quantidadeFaltantes" name="quantidadeFaltantes" placeholder="Quantidade">
-        <input type="text" id="categoriaFaltantes" name="categoriaFaltantes" placeholder="Categoria">
-        <input type="submit" value="Enviar">
-    </form>
-
-
-
+    
 </body>
 </html>

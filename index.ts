@@ -30,8 +30,8 @@ app.get("/contemProdutos.html", async (request: FastifyRequest, reply: FastifyRe
 
     } catch (erro:any) {
         if (erro.code === "ECONNREFUSED") {
-            console.log("ERRO: LIGUE O LARAGÃO!!! CABEÇA!")
-            reply.status(400).send({mensagem:"ERRO: LIGUE O LARAGÃO!!! CABEÇA!"})
+            console.log("ERRO: LIGUE O LARAGOOON")
+            reply.status(400).send({mensagem:"ERRO: LIGUE O LARAGOOON"})
         } else if (erro.code === "ER_BAD_DB_ERROR") {
             console.log("ERRO: CONFIRA O NOME DO BANCO DE DADOS OU CRIE UM NOVO BANCO COM O NOME QUE VOCÊ COLOCOU LÁ NA CONEXÃO")
             reply.status(400).send({mensagem:"ERRO: CONFIRA O NOME DO BANCO DE DADOS OU CRIE UM NOVO BANCO COM O NOME QUE VOCÊ COLOCOU LÁ NA CONEXÃO"})
@@ -74,8 +74,8 @@ app.post("/contemProdutos", async (request: FastifyRequest, reply: FastifyReply)
     } catch (erro:any) {
         switch (erro.code) {
             case "ECONNREFUSED":
-                console.log("ERRO: LIGUE O LARAGÃO!!! CABEÇA!");
-                reply.status(400).send({ mensagem: "ERRO: LIGUE O LARAGÃO!!! CABEÇA!" });
+                console.log("ERRO: LIGUE O LARAGOOON");
+                reply.status(400).send({ mensagem: "ERRO: LIGUE O LARAGOOON" });
                 break;
             case "ER_BAD_DB_ERROR":
                 console.log("ERRO: CONFIRA O NOME DO BANCO DE DADOS OU CRIE UM NOVO BANCO COM O NOME QUE VOCÊ COLOCOU LÁ NA CONEXÃO");

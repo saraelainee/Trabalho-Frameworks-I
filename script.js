@@ -5,15 +5,14 @@ async function buscaDados() {
             if (resposta.status === 200) {
                 const dados = await resposta.json()
                 console.log(dados)
-                const ul = document.getElementById("")
+                const ul = document.getElementById("minhalistaContem")
+                
                 for (let i = 0; i < dados.length; i++) {
                     const obj = dados[i];
  
                     const li = document.createElement("li")
 
                     li.innerText = `${obj.idExistentes}. ${obj.quantidadeExistentes} - ${obj.nomeProdutosExistentes} (${obj.categoriaExistentes})`
-
-                    console.log(obj.idExistentes,obj.nomeProdutosExistentes,obj.nomeProdutosExistentes,obj.categoriaExistentes)
 
                     ul.appendChild(li)
                 }
@@ -102,8 +101,6 @@ async function buscaDadosComprar() {
                     const li = document.createElement("li")
 
                     li.innerText = `${obj.idFaltantes}. ${obj.quantidadeFaltantes}- ${obj.nomeProdutosFaltantes} (${obj.categoriaFaltantes})`
-
-                    console.log(obj.nomeProdutosFaltantes)
 
                     ul.appendChild(li)
 
