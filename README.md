@@ -50,7 +50,7 @@ Siga estes passos com calma:
     Para a lista de produtos que você JÁ TEM:
     ```sql
     CREATE TABLE contemProdutos (
-        idExistentes INT,
+        idExistentes PRIMARY KEY,
         nomeProdutosExistentes VARCHAR(255),
         quantidadeExistentes INT,
         categoriaExistentes VARCHAR(100)
@@ -60,7 +60,7 @@ Siga estes passos com calma:
     Para a lista de produtos que você PRECISA COMPRAR:
     ```sql
     CREATE TABLE produtosAComprar (
-        idFaltantes INT,
+        idFaltantes PRIMARY KAY, 
         nomeProdutosFaltantes VARCHAR(255),
         quantidadeFaltantes INT,
         categoriaFaltantes VARCHAR(100)
