@@ -1,163 +1,176 @@
-# Projeto de Lista de Compras
+# Trabalho Prático I - Frameworks I: Sistema de Lista de Compras
 
-Olá! Este é um projeto simples para ajudar a organizar suas compras. Com ele, você pode:
+Este é um projeto simples para gerenciar uma lista de produtos em casa, uma lista de produtos a comprar e as categorias desses produtos. Foi desenvolvido para a disciplina de Frameworks I.
 
-* Anotar os produtos que você **já tem** em casa.
-* Criar uma lista dos produtos que você **precisa comprar**.
+##  miembros del Grupo
 
-## O que este projeto faz?
+* [Nome do Integrante 1]
+* [Nome do Integrante 2]
+* [Nome do Integrante 3]
 
-Imagine que você tem duas listas no seu computador:
+## Tema Escolhido
 
-1.  **Lista de Coisas em Casa:** Aqui você anota o que já tem (ex: 2 caixas de leite, 1 pacote de arroz).
-2.  **Lista de Coisas para Comprar:** Aqui você anota o que falta (ex: 1 pão, 3 maçãs).
+O sistema é um **Gerenciador de Lista de Compras Domésticas e Despensa**. Ele permite que o usuário:
+1.  Cadastre e visualize os produtos que já possui em casa/despensa.
+2.  Cadastre e visualize os produtos que precisa comprar.
+3.  Cadastre e visualize categorias para organizar os produtos.
 
-O projeto tem:
+## Funcionalidades Implementadas
 
-* **Páginas da Internet (Front-end):** São as telas que você vê e usa no navegador (como o Google Chrome) para adicionar e ver os produtos.
-* **Um "Cérebro" (Back-end):** É um programa que fica rodando escondido no seu computador. Ele guarda as informações das suas listas em um "caderno digital".
-* **Um "Caderno Digital" (Banco de Dados):** É onde as listas de produtos são realmente guardadas.
+O projeto é composto por 3 funcionalidades distintas, cada uma com operações de leitura (listar) e escrita (cadastrar):
 
-## O que você precisa ter no computador?
+1.  **Gerenciamento de Produtos em Casa:**
+    * Permite cadastrar produtos que você já tem (ex: "Arroz", "Feijão").
+    * Lista os produtos existentes.
+    * Campos: ID, Nome do Produto, Quantidade, Categoria.
+    * Endpoints: `GET /contemProdutos`, `POST /contemProdutos`
+    * Interface: `contemProdutos.html` (para cadastro) e exibição na `index.html`.
 
-1.  **Node.js:** É como um motor para fazer o "cérebro" do projeto funcionar. Você pode baixar [aqui](https://nodejs.org/).
-2.  **Laragon ou XAMPP:** São programas que ajudam a criar e gerenciar o "caderno digital" (o banco de dados MySQL). O Laragon é geralmente mais simples para iniciantes.
-    * [Laragon](https://laragon.org/download/)
-    * [XAMPP](https://www.apachefriends.org/index.html)
-3.  **Um navegador de internet:** Como Google Chrome, Firefox, etc.
-4.  **Arquivos do projeto:** Os arquivos `index.html`, `contemProdutos.html`, `produtosAComprar.html`, `script.js`, `style.css` (que você já tem) e o `index.ts` (ou `index.js` se já estiver convertido).
+2.  **Gerenciamento da Lista de Compras:**
+    * Permite cadastrar produtos que você precisa comprar.
+    * Lista os produtos que faltam.
+    * Campos: ID, Nome do Produto, Quantidade, Categoria.
+    * Endpoints: `GET /produtosAComprar`, `POST /produtosAComprar`
+    * Interface: `produtosAComprar.html` (para cadastro) e exibição na `index.html`.
 
-## Como fazer o projeto funcionar (Passo a Passo)
+3.  **Gerenciamento de Categorias:**
+    * Permite cadastrar categorias para os produtos (ex: "Alimentos", "Limpeza", "Higiene").
+    * Lista as categorias existentes.
+    * Endpoints: `GET /categorias`, `POST /categorias` (Exemplo, adaptar no código)
+    * Interface: Uma nova página HTML (ex: `categorias.html`) para listar e cadastrar categorias.
 
-Siga estes passos com calma:
+## Tecnologias Utilizadas
 
-### Passo 1: Preparar os arquivos do projeto
+* **Back-end:**
+    * Node.js
+    * Fastify.js (Framework Node.js)
+    * MySQL (Banco de Dados)
+    * TypeScript
+* **Front-end:**
+    * HTML5
+    * CSS3
+    * JavaScript (Puro)
+* **Ambiente de Desenvolvimento:**
+    * VS Code (Editor de Código)
+    * Laragon (Ambiente de desenvolvimento local com Apache/Nginx, MySQL, Node.js)
+    * MySQL Workbench (Para gerenciar o banco de dados)
 
-1.  Crie uma pasta no seu computador para o projeto (ex: `MinhaListaDeCompras`).
-2.  Coloque todos os arquivos do projeto (`index.html`, `contemProdutos.html`, `produtosAComprar.html`, `script.js`, `style.css`, e o `index.ts`) dentro desta pasta.
+## Instruções para Rodar o Projeto Localmente
 
-### Passo 2: Ligar o "Caderno Digital" (Banco de Dados MySQL)
+**Pré-requisitos:**
 
-1.  **Abra o Laragon** (ou XAMPP).
-2.  **Inicie o MySQL:** No Laragon, clique em "Start All" (ou apenas "MySQL"). No XAMPP, clique em "Start" ao lado de "MySQL".
-3.  **Crie o "caderno":**
-    * No Laragon, clique em "Database", o que deve abrir uma ferramenta chamada HeidiSQL.
-    * No XAMPP, clique em "Admin" ao lado de MySQL, o que deve abrir o phpMyAdmin no seu navegador.
-    * **Crie um novo banco de dados (database)** com o nome exatamente assim: `trabalho1Frameworks`
-4.  **Crie as "páginas do caderno" (tabelas):**
-    Dentro do banco de dados `trabalho1Frameworks` que você acabou de criar, você precisa rodar uns comandos para criar as "páginas" onde os produtos serão anotados. Copie e cole os comandos abaixo, um de cada vez, e execute:
+* Ter o **Laragon** instalado e rodando com os serviços de **MySQL** e **Node.js** (ou ter Node.js e MySQL instalados separadamente).
+* Ter o **VS Code** ou outro editor de sua preferência.
+* Ter o **MySQL Workbench** (ou outro cliente MySQL como o HeidiSQL que vem com o Laragon) para facilitar a criação do banco e tabelas.
 
-    Para a lista de produtos que você JÁ TEM:
-    ```sql
-    CREATE TABLE contemProdutos (
-        idExistentes PRIMARY KEY,
-        nomeProdutosExistentes VARCHAR(255),
-        quantidadeExistentes INT,
-        categoriaExistentes VARCHAR(100)
-    );
-    ```
+**Passos:**
 
-    Para a lista de produtos que você PRECISA COMPRAR:
-    ```sql
-    CREATE TABLE produtosAComprar (
-        idFaltantes PRIMARY KEY, 
-        nomeProdutosFaltantes VARCHAR(255),
-        quantidadeFaltantes INT,
-        categoriaFaltantes VARCHAR(100)
-    );
-    ```
-    * *O que são esses `INT`, `VARCHAR`? São tipos de dados. `INT` é para números inteiros (como o ID e a quantidade). `VARCHAR` é para textos (como o nome e a categoria).*
-    * *`idExistentes` e `idFaltantes` são como o número da linha na sua lista, para identificar cada produto.*
+1.  **Clone o Repositório (ou baixe os arquivos):**
+    * Coloque a pasta do projeto dentro da pasta `www` do seu Laragon (ex: `C:/laragon/www/meu-projeto-frameworks`).
 
-### Passo 3: Ligar o "Cérebro" do Projeto (Back-end)
+2.  **Configure o Banco de Dados:**
+    * Abra o MySQL Workbench (ou o HeidiSQL).
+    * Certifique-se que o serviço MySQL do Laragon está rodando.
+    * Crie um novo banco de dados (schema) chamado `trabalho1Frameworks` (se ainda não existir).
+    * Execute os seguintes comandos SQL para criar as tabelas:
 
-O arquivo `index.ts` é o "cérebro". Se ele é `.ts` (TypeScript), precisamos de um passo extra. Se você já tem um `index.js`, pode pular a parte de "compilar".
+        ```sql
+        -- Tabela para produtos existentes na despensa
+        CREATE TABLE IF NOT EXISTS contemProdutos (
+            idExistentes INT PRIMARY KEY,
+            nomeProdutosExistentes VARCHAR(255) NOT NULL,
+            quantidadeExistentes INT,
+            categoriaExistentes VARCHAR(100)
+        );
 
-1.  **Abra o Terminal (ou Prompt de Comando):**
-    * No Windows, procure por "cmd" ou "PowerShell".
-    * No Mac, procure por "Terminal".
-2.  **Vá até a pasta do seu projeto:**
-    Use o comando `cd` seguido do caminho da sua pasta. Exemplo:
-    ```bash
-    cd C:\Users\SeuNome\Documentos\MinhaListaDeCompras
-    ```
-3.  **Instale as ferramentas necessárias:**
-    Com o terminal aberto NA PASTA DO PROJETO, digite os comandos abaixo, um de cada vez, e pressione Enter:
-    ```bash
-    npm install fastify
-    npm install mysql2
-    npm install @fastify/cors
-    ```
-    Se o seu arquivo principal for `index.ts` (TypeScript), instale também:
-    ```bash
-    npm install -D typescript ts-node nodemon
-    ```
-    * *O que é `npm install`? Ele baixa essas ferramentas (fastify, mysql2, etc.) que o "cérebro" precisa para funcionar.*
+        -- Tabela para produtos que precisam ser comprados
+        CREATE TABLE IF NOT EXISTS produtosAComprar (
+            idFaltantes INT PRIMARY KEY,
+            nomeProdutosFaltantes VARCHAR(255) NOT NULL,
+            quantidadeFaltantes INT,
+            categoriaFaltantes VARCHAR(100)
+        );
 
-4.  **Faça o "cérebro" começar a funcionar:**
-    Ainda no terminal, na pasta do projeto:
-
-    * **Se você tem o arquivo `index.ts` (TypeScript):**
-        Você pode criar um atalho no arquivo `package.json`. Se não tiver um `package.json`, crie-o digitando `npm init -y` no terminal. Depois, abra o `package.json` e adicione a linha `"dev": "nodemon --exec ts-node index.ts"` dentro de `"scripts"`, assim:
-        ```json
-        {
-          "name": "minhalistadecompras",
-          "version": "1.0.0",
-          "description": "",
-          "main": "index.js", // ou index.ts
-          "scripts": {
-            "test": "echo \"Error: no test specified\" && exit 1",
-            "dev": "nodemon --exec ts-node index.ts" // ADICIONE ESTA LINHA OU MODIFIQUE
-          },
-          "keywords": [],
-          "author": "",
-          "license": "ISC"
-          // ... outras coisas que o npm init -y criou ...
-        }
+        -- Tabela para a funcionalidade de Categorias de Produtos
+        CREATE TABLE IF NOT EXISTS categorias (
+            idCategoria INT AUTO_INCREMENT PRIMARY KEY,
+            nomeCategoria VARCHAR(255) NOT NULL UNIQUE
+        );
         ```
-        Depois de salvar o `package.json`, digite no terminal:
+    * *Observação:* As credenciais de acesso ao banco no código (`index.ts`) estão como `user: 'root'` e `password: ""`. Se as suas forem diferentes, ajuste no código (`src/index.ts`).
+
+3.  **Instale as Dependências do Back-end:**
+    * Abra um terminal (pode ser o terminal do VS Code ou o "Terminal" do Laragon) na pasta raiz do projeto (ex: `C:/laragon/www/meu-projeto-frameworks`).
+    * Execute o comando:
+        ```bash
+        npm install
+        ```
+        Este comando vai ler o arquivo `package.json` (certifique-se que ele existe e lista as dependências como `fastify`, `mysql2`, `@fastify/cors`, `typescript`, `ts-node-dev`, `@types/node`) e baixar tudo o que o backend precisa.
+
+4.  **Rode o Back-end (API):**
+    * No mesmo terminal, na pasta raiz do projeto, execute:
         ```bash
         npm run dev
         ```
-    * **Alternativa para `index.ts` (mais simples, sem `nodemon`):**
-        Primeiro compile:
-        ```bash
-        npx tsc index.ts
+        (Este comando assume que você tem um script `dev` no seu `package.json`. Um exemplo de `package.json` mínimo seria:
+        ```json
+        {
+          "name": "trabalho1-frameworks",
+          "version": "1.0.0",
+          "description": "",
+          "main": "src/index.ts",
+          "scripts": {
+            "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+            "build": "tsc"
+          },
+          "keywords": [],
+          "author": "",
+          "license": "ISC",
+          "dependencies": {
+            "@fastify/cors": "^9.0.1", // Ou a versão que você instalou
+            "fastify": "^4.27.0",     // Ou a versão que você instalou
+            "mysql2": "^3.10.0"       // Ou a versão que você instalou
+          },
+          "devDependencies": {
+            "@types/node": "^20.14.2", // Ou a versão que você instalou
+            "ts-node-dev": "^2.0.0",   // Ou a versão que você instalou
+            "typescript": "^5.4.5"     // Ou a versão que você instalou
+          }
+        }
         ```
-        Isso vai criar um arquivo `index.js`. Depois rode:
-        ```bash
-        node index.js
-        ```
-    * **Se você já tem o arquivo `index.js` (JavaScript):**
-        Digite no terminal:
-        ```bash
-        node index.js
-        ```
+        Se você não usa `ts-node-dev`, compile com `npm run build` (que roda `tsc`) e depois rode o arquivo JavaScript gerado em `dist/index.js` com `node dist/index.js`).
+    * Você deverá ver uma mensagem como `Fastify iniciado na porta: http://127.0.0.1:8001`. Isso significa que sua API Node.js está rodando.
 
-    Se tudo deu certo, você verá uma mensagem como: `Fastify iniciado na porta: http://127.0.0.1:8001` ou `http://localhost:8001`.
-    **Importante:** Deixe esta janela do terminal aberta! Se você fechar, o "cérebro" para de funcionar.
+5.  **Acesse o Front-end:**
+    * Abra seu navegador de internet (Chrome, Firefox, etc.).
+    * Se você colocou o projeto na pasta `www` do Laragon, você pode geralmente acessar através de um endereço como `http://meu-projeto-frameworks.test/index.html` (o Laragon cria um host virtual com o nome da pasta, adicionando `.test` ao final) ou `http://localhost/meu-projeto-frameworks/index.html`.
+    * Alternativamente, você pode simplesmente abrir o arquivo `index.html` da pasta do seu projeto diretamente no navegador (clicando duas vezes nele no seu explorador de arquivos). O JavaScript nos arquivos HTML fará as chamadas para a API que está rodando em `http://localhost:8001`.
 
-### Passo 4: Usar as Telas no Navegador (Front-end)
+## Diagrama Básico de Fluxo de Dados
 
-1.  Vá até a pasta onde estão seus arquivos (`MinhaListaDeCompras`).
-2.  Encontre o arquivo `index.html`.
-3.  Dê dois cliques nele. Ele vai abrir no seu navegador de internet (Google Chrome, Firefox, etc.).
+```mermaid
+sequenceDiagram
+    participant Usuário (Navegador)
+    participant Frontend JS
+    participant Backend API (Fastify)
+    participant Banco de Dados (MySQL)
 
-Agora você pode usar as listas!
+    Usuário (Navegador)->>Frontend JS: Preenche formulário (ex: Novo Produto) e clica Enviar
+    Frontend JS->>Backend API (Fastify): POST /recurso (com dados do produto)
+    Backend API (Fastify)->>Backend API (Fastify): Valida dados recebidos
+    alt Dados Válidos
+        Backend API (Fastify)->>Banco de Dados (MySQL): INSERT INTO tabela VALUES (...)
+        Banco de Dados (MySQL)-->>Backend API (Fastify): Sucesso/ID do novo registro
+        Backend API (Fastify)-->>Frontend JS: Resposta JSON { sucesso: true, dados }
+        Frontend JS->>Usuário (Navegador): Exibe mensagem de sucesso e atualiza lista
+    else Dados Inválidos
+        Backend API (Fastify)-->>Frontend JS: Resposta JSON { erro: "Mensagem de erro" }
+        Frontend JS->>Usuário (Navegador): Exibe mensagem de erro
+    end
 
-* Você verá duas seções: "Lista de itens Existentes" e "Lista de itens Faltantes".
-* Clique nos botões "Cadastrar Produtos..." para ir para as telas de adicionar novos produtos.
-* Preencha os campos (ID, Nome, Quantidade, Categoria) e clique em "Enviar".
-* Use o botão "Voltar" para ir para a tela inicial.
-
-## Como as partes conversam? (De forma bem simples)
-
-1.  **Você clica em algo na tela** (ex: botão "Enviar" depois de digitar um produto).
-2.  **O `script.js` (no seu navegador)** pega essas informações.
-3.  Ele envia uma mensagem pela internet (do seu navegador) para o **"cérebro" (`index.ts` ou `index.js` que está rodando no terminal)**. A mensagem vai para o endereço `http://localhost:8001`.
-4.  O **"cérebro"** recebe a mensagem, entende o que você quer fazer (ex: adicionar um produto).
-5.  Ele então escreve ou lê do **"caderno digital" (Banco de Dados MySQL)**.
-6.  O "cérebro" manda uma resposta de volta para o `script.js` no seu navegador (ex: "Produto adicionado com sucesso!" ou "Deu erro!").
-7.  O `script.js` mostra essa resposta para você na tela (atualizando a lista ou mostrando um alerta).
-
-É isso! Se algum passo não funcionar, leia as mensagens de erro com calma, elas costumam dar dicas do que aconteceu. Boa sorte!
+    Usuário (Navegador)->>Frontend JS: Página carrega / Solicita lista
+    Frontend JS->>Backend API (Fastify): GET /recurso
+    Backend API (Fastify)->>Banco de Dados (MySQL): SELECT * FROM tabela
+    Banco de Dados (MySQL)-->>Backend API (Fastify): Retorna linhas da tabela
+    Backend API (Fastify)-->>Frontend JS: Resposta JSON [ {produto1}, {produto2} ]
+    Frontend JS->>Usuário (Navegador): Exibe a lista de produtos na página
