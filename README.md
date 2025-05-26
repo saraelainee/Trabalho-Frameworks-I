@@ -4,9 +4,9 @@ Este é um projeto simples para gerenciar uma lista de produtos em casa, uma lis
 
 ##  miembros del Grupo
 
-* [Nome do Integrante 1]
-* [Nome do Integrante 2]
-* [Nome do Integrante 3]
+* Lorena Mascarenhas
+* Sara Duarte
+* Vânia Moreira
 
 ## Tema Escolhido
 
@@ -47,8 +47,8 @@ O projeto é composto por 3 funcionalidades distintas, cada uma com operações 
     * MySQL (Banco de Dados)
     * TypeScript
 * **Front-end:**
-    * HTML5
-    * CSS3
+    * HTML
+    * CSS
     * JavaScript (Puro)
 * **Ambiente de Desenvolvimento:**
     * VS Code (Editor de Código)
