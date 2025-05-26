@@ -1,4 +1,4 @@
-# Meu Projeto de Lista de Compras
+# Projeto de Lista de Compras
 
 Olá! Este é um projeto simples para ajudar a organizar suas compras. Com ele, você pode:
 
