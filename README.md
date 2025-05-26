@@ -60,7 +60,7 @@ Siga estes passos com calma:
     Para a lista de produtos que você PRECISA COMPRAR:
     ```sql
     CREATE TABLE produtosAComprar (
-        idFaltantes PRIMARY KAY, 
+        idFaltantes PRIMARY KEY, 
         nomeProdutosFaltantes VARCHAR(255),
         quantidadeFaltantes INT,
         categoriaFaltantes VARCHAR(100)
